@@ -35,16 +35,18 @@ renderSquare (x, y) =
 
 -- Render the board
 renderBoardHelper :: Int -> Int -> Picture -> Picture
-renderBoardHelper x y =
+renderBoardHelper x y pic =
     let
         xf = (fromIntegral x * squareSize - offset) 
         yf = (fromIntegral y * squareSize - offset) 
     in
-    translate xf yf $ 
+    translate xf yf pic
 
 renderBoard :: Picture
-renderBoard =  
-    pictures [renderBoardHelper x y | x <- [0..boardSize - 1], y <- [0..boardSize - 1]]
+renderBoard = let
+        rs x y = renderSquare (x, y)
+    in
+    pictures [renderBoardHelper x y (rs x y) | x <- [0..boardSize - 1], y <- [0..boardSize - 1]]
 
 -- Render a piece (load images from disk)
 renderPiece :: (BoardDefinition.Color, Piece) -> Position -> IO Picture
@@ -54,8 +56,7 @@ renderPiece (pieceColor, piece) (x, y) = do
             BoardDefinition.Black -> "black_" ++ show piece ++ ".bmp"
 
     pieceImage <- loadBMP filename
-    return $ translate (fromIntegral x * squareSize - offset) 
-                     (fromIntegral y * squareSize - offset) pieceImage
+    return $ renderBoardHelper x y pieceImage
     where offset = fromIntegral boardSize * squareSize / 2 - squareSize / 2
 
 -- Render all pieces on the board
@@ -71,3 +72,5 @@ renderPieces board = do
 displayBoard :: IO ()
 displayBoard = 
     display (InWindow "Chess Board" (windowSize, windowSize) (10, 10)) white renderBoard
+
+

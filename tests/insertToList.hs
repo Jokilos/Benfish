@@ -1,4 +1,5 @@
 import Test.HUnit 
 import Engine
+
 test1 :: Test
-test1 :: TestCase (assertEqual "Insert Element" [Int 1,Int 2] (insertToList (Int 1) (Int 2) [Int 1]))
+test1 = TestCase (assertEqual "Insert Element" [1, 2] (insertToList 1 2 [1]))
