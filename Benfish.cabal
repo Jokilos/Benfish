@@ -67,16 +67,11 @@ executable Benfish
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
 
-
-
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1, gloss, HUnit, containers
 
-
-
     -- Directories containing source files.
     hs-source-dirs:   app, tests
-
 
     -- Base language which the package is written in.
     default-language: Haskell2010
@@ -84,10 +79,9 @@ executable Benfish
 tests: True
 
 test-suite engine-test
-  type:                exitcode-stdio-1.0
-  main-is:             insertToList.hs
-  build-depends:        base ^>=4.17.2.1, gloss, HUnit, containers
+    type:                exitcode-stdio-1.0
+    main-is:             insertToList.hs
+    build-depends:        base ^>=4.17.2.1, gloss, HUnit, containers
 
-                       
-  hs-source-dirs:      tests, app
-  default-language:    Haskell2010
+    hs-source-dirs:      tests, app
+    default-language:    Haskell2010
