@@ -27,4 +27,6 @@ initialBoard = [
     replicate 8 Nothing,
     replicate 8 (Just (Black, Pawn)),
     initialRow Black    ]
-
+    
+emptyBoard :: Board
+emptyBoard = replicate 8 (replicate 8 Nothing) 
