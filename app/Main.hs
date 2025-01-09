@@ -1,6 +1,8 @@
 module Main where
 import BoardDefinition
-import RenderBoard
+import RenderBoard 
 
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = do 
+    putStrLn "Hello, Haskell!"
+    displayBoard
