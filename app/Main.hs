@@ -5,4 +5,4 @@ import RenderBoard
 main :: IO ()
 main = do 
     putStrLn "Hello, Haskell!"
-    displayBoard
+    displayBoard initialBoard

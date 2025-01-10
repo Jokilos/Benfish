@@ -12,8 +12,6 @@ insertToList n el tab = insertToList (n-1) el tab
 -- insetSquare table piece (x, y) board =  
 -- -- toBoard = 
 
-basicSum x y = x + y
-
 type TrueBoard = Map Position Piece
 type Move = (Position, Position)
 type Situation = (Board, Color)
